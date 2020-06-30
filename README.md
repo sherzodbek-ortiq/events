@@ -6,7 +6,7 @@ App for publishing events
 
 Confirmation emails are not send, as I wasn't able to find free SMTP
 Email and password are validated by devise default validator
-Webpacker is used for importing css
+Webpacker is used to serve css, importing bootstrap
 Additional feature: the account is locked after 5 unsuccessful attempts of login. The account is unlocked after 1 hour
 
 ## Requrements
