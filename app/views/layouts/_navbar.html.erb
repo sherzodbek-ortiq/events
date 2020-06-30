@@ -1,0 +1,9 @@
+<ul class="nav navbar-nav float-lg-right mai-user-nav mai-user-nav-1">
+  <% if user_signed_in? %>
+    <li class = "nav-item" ><b><a class="nav-link nav-link-1" href="/users/edit" >My Profile</a></b></li>
+    <li class = "nav-item"><b><a class="nav-link nav-link-1" data-method="delete" href="/users/sign_out">Sign out</a></b></li>
+  <%else%>
+    <li class = "nav-item"><b><a class="nav-link nav-link-1" href="/users/sign_in">Sign in</a></b></li>
+    <li class = "nav-item"><b><a class="nav-link nav-link-1" href="/users/sign_up">Register</a></b></li>
+  <%end%>
+</ul>

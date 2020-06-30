@@ -2,6 +2,11 @@
 
 App for publishing events
 
+## Information
+
+Confirmation emails are not send, as I wasn't able to find free SMTP
+Email and password are validated by devise default validator
+
 ## Requrements
 
 Ruby version:
