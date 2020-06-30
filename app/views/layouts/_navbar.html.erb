@@ -1,9 +1,25 @@
-<ul class="nav navbar-nav float-lg-right mai-user-nav mai-user-nav-1">
-  <% if user_signed_in? %>
-    <li class = "nav-item" ><b><a class="nav-link nav-link-1" href="/users/edit" >My Profile</a></b></li>
-    <li class = "nav-item"><b><a class="nav-link nav-link-1" data-method="delete" href="/users/sign_out">Sign out</a></b></li>
-  <%else%>
-    <li class = "nav-item"><b><a class="nav-link nav-link-1" href="/users/sign_in">Sign in</a></b></li>
-    <li class = "nav-item"><b><a class="nav-link nav-link-1" href="/users/sign_up">Register</a></b></li>
-  <%end%>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">Events</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+  		<% if user_signed_in? %>
+  		  <li class="nav-item active">
+  		    <a class="nav-link" href="/users/edit">Edit profile</a>
+  		  </li>
+  		  <li class="nav-item active">
+  		    <a class="nav-link" href="/users/sign_out" data-method="delete">Sign out</a>
+  		  </li>
+  		<%else%>
+  		  <li class="nav-item active">
+  		    <a class="nav-link" href="/users/sign_in">Sign in</a>
+  		  </li>
+  		  <li class="nav-item active">
+  		    <a class="nav-link" href="/users/sign_up">Sign up</a>
+  		  </li>
+  		<%end%>
+    </ul>
+  </div>
+</nav>
