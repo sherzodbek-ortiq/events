@@ -6,7 +6,7 @@ class Event < ApplicationRecord
 	validates :status, inclusion: {in: :allowed_statuses}
 
   def is_date_valid?
-		errors.add(:title, "Selected date has already past") if date.to_date <= Time.now.to_date
+		errors.add(:title, "Selected date has already past") if date.present? && date.to_date <= Time.now.to_date
   end
 
 	private

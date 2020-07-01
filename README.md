@@ -9,6 +9,11 @@ Email and password are validated by devise default validator
 Webpacker is used to serve css, importing bootstrap
 Additional feature: the account is locked after 5 unsuccessful attempts of login. The account is unlocked after 1 hour
 Authorization is handled by cancancan
+App's front end built with reacts js as single page app.
+skip_before_action :verify_authenticity_token is added
+Events are sorted by date
+There is small problem with datepicker, it sometemis picks wrong data. For example: It can set today's date if you
+pick tomorrow's
 
 ## Requrements
 

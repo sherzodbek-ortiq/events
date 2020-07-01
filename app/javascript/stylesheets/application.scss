@@ -24,8 +24,6 @@ body{
 	}
 }
 
-
-
 footer{
   position: absolute;
   bottom: 0%;
@@ -52,3 +50,38 @@ footer{
 .footer-copyright div{
   text-align: center;
 }
+
+/*Styling events START*/
+
+.page-type-selected{
+  background-color: yellow !important;
+  color: black;
+}
+
+.page-type-btn{
+  margin: 2px;
+}
+
+.new-event-form{
+  padding: 5px 50px 5px 50px;
+}
+
+.event{
+  text-align: center;
+  padding: 5px;
+}
+
+.event-data{
+  margin-bottom: 5px;
+}
+
+.error-event-item{
+  color: red;
+  text-align: center;
+}
+
+.event-card{
+  width: 70%;
+  margin: auto;
+}
+/*Styling events END*/
