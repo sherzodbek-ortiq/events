@@ -3,10 +3,12 @@ require 'rails_helper'
 RSpec.describe Api::V1::EventsController, type: :controller do
 
 	before(:all) do
-		@user_1 = User.create(full_name:"test_user_1", email:"test_user_1@test_user_1.com", password:"jdasdjpasd", password_confirmation:"jdasdjpasd")
-		@user_2 = User.create(full_name:"test_user_2", email:"test_user_2@test_user_2.com", password:"jdasdjpasd", password_confirmation:"jdasdjpasd")
+		@user_1 = User.create(full_name:"test_user_1", email:"test_user_1@test_user_1.com",
+													password:"jdasdjpasd", password_confirmation:"jdasdjpasd")
+		@user_2 = User.create(full_name:"test_user_2", email:"test_user_2@test_user_2.com",
+													password:"jdasdjpasd", password_confirmation:"jdasdjpasd")
 
-		@event_1 = @user_1.events.create(name: "event_1", date: Time.now, period: "yearly", status: "active")
+		@event_1 = @user_1.events.create(name: "event_1", date: Date.tomorrow, period: "yearly", status: "active")
 	end
 
 	after(:all) do
@@ -20,7 +22,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
 	    it "event is successfully created" do
 	    	sign_in @user_1
-				post :create, params: {event: {name: "event", date: Time.now, period: "yearly", status: "active"}}, format: :json
+				post :create, params: {event: {name: "event", date: Date.tomorrow, period: "yearly", status: "active"}}, format: :json
 				expect(response.body["errors"].present?).to be(false)
 	    end
 	
@@ -34,7 +36,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
 	    it "event is not updated" do
 	    	sign_in @user_2
-				patch :update, params: {id: @event_1, event: { name: "event_2", date: Time.now, period: "yearly", status: "active"}}, format: :json
+				patch :update, params: {id: @event_1, event: { name: "event_2", date: Date.tomorrow, period: "yearly", status: "active"}}, format: :json
 				expect(response.status).to eq(403)
 	    end
 	
@@ -44,7 +46,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
 	    it "event is updated" do
 	    	sign_in @user_1
-				patch :update, params: {id: @event_1, event: { name: "event_2", date: Time.now, period: "yearly", status: "active"}}, format: :json
+				patch :update, params: {id: @event_1, event: { name: "event_2", date: Date.tomorrow, period: "yearly", status: "active"}}, format: :json
 				expect(response.status).to eq(200)
 	    end
 	

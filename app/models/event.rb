@@ -1,8 +1,13 @@
 class Event < ApplicationRecord
 	belongs_to :user
-	validates :name, :date, :period, :status, presence: true
+	validates :name, :date, :period, :status, :user_id, presence: true
+	validate :is_date_valid?
 	validates :period, inclusion: {in: :allowed_periods}
 	validates :status, inclusion: {in: :allowed_statuses}
+
+  def is_date_valid?
+		errors.add(:title, "Selected date has already past") if date.to_date <= Time.now.to_date
+  end
 
 	private
 
@@ -11,7 +16,8 @@ class Event < ApplicationRecord
 				"daily",
 				"weekly",
 				"monthly",
-				"yearly"
+				"yearly",
+				"no repeat"
 			]
 		end
 
