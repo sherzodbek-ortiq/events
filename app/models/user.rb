@@ -6,5 +6,10 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   devise :database_authenticatable, :registerable,
     :rememberable, :validatable, :lockable
+	before_create :set_defaults
+
+	def set_defaults
+		self.role = "registered_user"
+	end
 
 end
