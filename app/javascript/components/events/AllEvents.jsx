@@ -13,7 +13,7 @@ class AllEvents extends React.Component {
 
 		events = events.map((event) =>{
 			return(
-				<Event key={event.id} event={event} removeEvent={this.props.removeEvent} eventPeriods={this.props.eventPeriods} eventStatuses={this.props.eventStatuses}/>
+				<Event key={event.id} user_id={this.props.user_id} event={event} removeEvent={this.props.removeEvent} eventPeriods={this.props.eventPeriods} eventStatuses={this.props.eventStatuses}/>
 			)
 		});
 

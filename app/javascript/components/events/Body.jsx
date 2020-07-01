@@ -2,6 +2,7 @@ import React from "react"
 import NavBar from './NavBar.jsx'
 import NewEvent from './NewEvent.jsx'
 import AllEvents from './AllEvents.jsx'
+import Header from './Header.jsx'
 
 class Body extends React.Component {
 
@@ -69,12 +70,28 @@ class Body extends React.Component {
 	}
 
 	render(){
+
+		let body;
+		if(this.props.user_id != ""){
+			body = (
+				<div>
+					<Header />
+					<NewEvent prependEvent={this.prependEvent} eventPeriods={this.state.eventPeriods} eventStatuses={this.state.eventStatuses}/>
+					<NavBar user_id={this.props.user_id} pageType={this.state.pageType} switchPageType={this.switchPageType}/>
+					<AllEvents user_id={this.props.user_id} events={this.state.events} removeEvent={this.removeEvent} eventPeriods={this.state.eventPeriods} eventStatuses={this.state.eventStatuses}/>
+				</div>
+			);
+		}else{
+			body = (
+				<div>
+					<NavBar user_id={""} pageType={this.state.pageType} switchPageType={this.switchPageType}/>
+					<AllEvents user_id={""} events={this.state.events} removeEvent={this.removeEvent} eventPeriods={this.state.eventPeriods} eventStatuses={this.state.eventStatuses}/>
+				</div>
+			);
+		}
+
 		return(
-			<div>
-				<NewEvent prependEvent={this.prependEvent} eventPeriods={this.state.eventPeriods} eventStatuses={this.state.eventStatuses}/>
-				<NavBar pageType={this.state.pageType} switchPageType={this.switchPageType}/>
-				<AllEvents events={this.state.events} removeEvent={this.removeEvent} eventPeriods={this.state.eventPeriods} eventStatuses={this.state.eventStatuses}/>
-			</div>
+			<div>{body}</div>
 		);
 	}
 }

@@ -9,11 +9,13 @@ class Event extends React.Component {
 		super(props);
 
 		this.state = {
+			user_id:"",
 			name: "",
 			date: "",
 			period: "",
 			status: "",
 			previousValues: {
+				user_id:"",
 				name: "",
 				date: "",
 				period: "",
@@ -32,11 +34,13 @@ class Event extends React.Component {
 
 	componentDidMount(){
 		this.setState({
+			user_id: this.props.event.user_id,
 			name: this.props.event.name,
 			date: new Date(this.props.event.date),
 			period: this.props.event.period,
 			status: this.props.event.status,
 			previousValues:{
+				user_id: this.props.event.user_id,
 				name: this.props.event.name,
 				date: new Date(this.props.event.date),
 				period: this.props.event.period,
@@ -190,15 +194,26 @@ class Event extends React.Component {
 			);
 		}
 
+		let buttons;
+		if(this.props.user_id == this.state.user_id){
+			buttons = (
+				<div>
+					<button onClick={this.handleEdit} disabled={this.state.disabled} className="btn btn-primary mr-1"> 
+						{this.state.editable ? "Update" : "Edit"}
+					</button>				
+					{this.state.editable ? <button onClick={this.handleCancel} className="btn btn-primary">Cancel</button> : ""}
+					<button onClick={this.handleDelete} className="btn btn-primary ml-1">Delete</button>
+				</div>
+			);
+		} else{
+			buttons = ("");
+		}
+
 		return(
 			<div className="event">
 				<ErrorMessages errors={this.state.errors}/>
 				{event_data}
-				<button onClick={this.handleEdit} disabled={this.state.disabled} className="btn btn-primary">
-					{this.state.editable ? "Update" : "Edit"}
-				</button>				
-				{this.state.editable ? <button onClick={this.handleCancel} className="btn btn-primary">Cancel</button> : ""}
-				<button onClick={this.handleDelete} className="btn btn-primary">Delete</button>
+				{buttons}
 			</div>
 		);
 	}

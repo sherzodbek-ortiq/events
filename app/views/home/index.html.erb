@@ -1,1 +1,1 @@
-<%= react_component 'App' %>
+<%= react_component 'App', {user_id: current_user.present? ? current_user.id : ""} %>

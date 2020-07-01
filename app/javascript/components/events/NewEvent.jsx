@@ -56,6 +56,7 @@ class NewEvent extends React.Component {
 		.then((responseJson) => {
 			if(!("errors" in responseJson)){
 			  this.props.prependEvent({
+			  	user_id: responseJson.user_id,
 				  id: responseJson.id,
 					name: this.state.name,
 					date: responseJson.date,

@@ -7,7 +7,7 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact component={EventsMain} />
+          <Route path="/" exact component={() => <EventsMain user_id={this.props.user_id}/>}/>
         </Switch>
       </Router>
     );
