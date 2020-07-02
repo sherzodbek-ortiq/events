@@ -13,7 +13,7 @@ App's front end built with reacts js as single page app.
 skip_before_action :verify_authenticity_token is added
 Events are sorted by date
 There is small problem with datepicker, it sometemis picks wrong data. For example: It can set today's date if you
-pick tomorrow's
+pick tomorrow's. It happens while updating event
 Guest can see all event but not allowed to edit them
 Registered user can see all events, but can edit only it's own
 Status =  Card background color
