@@ -2,22 +2,6 @@
 
 App for publishing events
 
-## Information
-
-Confirmation emails are not send, as I wasn't able to find free SMTP
-Email and password are validated by devise default validator
-Webpacker is used to serve css, importing bootstrap
-Additional feature: the account is locked after 5 unsuccessful attempts of login. The account is unlocked after 1 hour
-Authorization is handled by cancancan
-App's front end built with reacts js as single page app.
-skip_before_action :verify_authenticity_token is added
-Events are sorted by date
-There is small problem with datepicker, it sometemis picks wrong data. For example: It can set today's date if you
-pick tomorrow's. It happens while updating event
-Guest can see all event but not allowed to edit them
-Registered user can see all events, but can edit only it's own
-Status =  Card background color
-
 ## Requrements
 
 Ruby version:
@@ -52,10 +36,13 @@ Database:
 
 ## Run app
 
-	rails s
+The app uses Sidekiq, Redis for backgroung jobs for updating the statuses of events
+Run with foreman:
 
-## Features to be implemented
+	foreman start -f Procfile.dev
 
-1. Add restrictions in events controller index action to avoid guest to see events of particular user
+Run each command separately:
 
-2. Add restrictions to prevent user from deleting it's own account
+	redis-server
+	sidekiq
+	rails server -p 3000
