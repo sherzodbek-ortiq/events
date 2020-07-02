@@ -12,7 +12,7 @@ class Body extends React.Component {
     this.state = {
       events: [],
       pageType: "all",
-    	eventPeriods: ["yearly", "weekly", "monthly", "daily"],
+    	eventPeriods: ["yearly", "weekly", "monthly", "daily", "no repeat"],
 			eventStatuses: ["active", "upcoming", "past"],
     	errors: {}
     };

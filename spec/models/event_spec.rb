@@ -30,6 +30,17 @@ RSpec.describe Event, type: :model do
 
 		end
 
+		context "when date is equal to current date or it has already past and status is past" do
+
+			let (:event_today) {Event.new(name:"Hello", date:Time.now, period:"yearly",
+													status:"past", user_id:@user_1.id)}
+			
+			it "should be valid" do
+				expect(event_today.valid?).to be true
+			end	
+
+		end
+
 		context "when date is equal to tomorrow or greater" do
 
 			let (:event_tomorrow) {Event.new(name:"Hello", date:Date.tomorrow, period:"yearly", status:"active", user_id:@user_1.id)}
@@ -42,7 +53,7 @@ RSpec.describe Event, type: :model do
 
 		context "when period value does not match allowed values" do
 
-			let (:event) {Event.new(name:"Hello", date:"Wed, 01 Jul 2020 00:16:14 +0300", period:"yearl",
+			let (:event) {Event.new(name:"Hello", date:Date.tomorrow, period:"yearl",
 										status:"active", user_id:@user_1.id)}
 	
 			it "should not be valid" do
@@ -53,7 +64,7 @@ RSpec.describe Event, type: :model do
 	
 		context "when status value does not match allowed values" do
 
-			let (:event) {Event.new(name:"Hello", date:"Wed, 01 Jul 2020 00:16:14 +0300", period:"year",
+			let (:event) {Event.new(name:"Hello", date:Date.tomorrow, period:"year",
 										status:"actives", user_id:@user_1.id)}
 	
 			it "should not be valid" do

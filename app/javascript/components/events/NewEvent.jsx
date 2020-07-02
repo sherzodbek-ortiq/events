@@ -10,7 +10,7 @@ class NewEvent extends React.Component {
 			name: "",
 			date: "",
 			period: "no repeat",
-			status: "active",
+			status: "upcoming",
 			disabled: false,
 			errors:{}
 		};
@@ -48,7 +48,7 @@ class NewEvent extends React.Component {
 					name: event_form.name.value,
 					date: event_form.date.value,
 					period: event_form.period.value,
-					status: event_form.status.value
+					status: this.state.status
 				}
 			})
 		})
@@ -61,7 +61,7 @@ class NewEvent extends React.Component {
 					name: this.state.name,
 					date: responseJson.date,
 					period: this.state.period,
-					status: this.state.status
+					status: responseJson.status
 			  })
 				this.setState({ errors: [] });
 			}else{
@@ -79,13 +79,6 @@ class NewEvent extends React.Component {
 		
 		let period_options = this.props.eventPeriods
 		period_options = period_options.map((option, index) => {
-			return(
-				<option key={index} value={option}>{option}</option>
-			);
-		});
-
-		let status_options = this.props.eventStatuses
-		status_options = status_options.map((option, index) => {
 			return(
 				<option key={index} value={option}>{option}</option>
 			);
@@ -114,13 +107,6 @@ class NewEvent extends React.Component {
 						<label>Period:</label>
 						<select className="form-control" name="period" value={this.state.period} onChange={this.handleChange}>
 							{period_options}
-						</select>
-					</div>
-
-					<div className="form-event col-xs-12 col-sm-12 col-md-6 col-lg-6">
-						<label>Status:</label>
-						<select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
-							{status_options}
 						</select>
 					</div>
 

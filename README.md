@@ -16,6 +16,7 @@ There is small problem with datepicker, it sometemis picks wrong data. For examp
 pick tomorrow's
 Guest can see all event but not allowed to edit them
 Registered user can see all events, but can edit only it's own
+Status =  Card background color
 
 ## Requrements
 
