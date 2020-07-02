@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7.1'
 gem 'cancancan', '~> 3.0.1'
 gem 'react-rails', '~> 2.6.0'
+gem 'whenever', '~> 1.0.0'
+gem 'redis', '~> 4.1.4'
+gem 'sidekiq', '~> 6.0.6'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
