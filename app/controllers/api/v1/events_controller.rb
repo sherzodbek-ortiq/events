@@ -24,7 +24,7 @@ class Api::V1::EventsController < ApplicationController
 	def update
 		event = Event.find(params[:id])
 		if event.update(event_params)
-			render json: {status: 200}
+			render json: event
 		else
 			render json: {errors: event.errors.messages}
 		end

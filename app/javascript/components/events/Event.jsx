@@ -134,12 +134,12 @@ class Event extends React.Component {
 						name: name,
 						date: date,
 						period: period,
-						status: status,
+						status: responseJson.status,
 						previousValues:{
 							name: name,
 							date: date,
 							period: period,
-							status: status
+							status: responseJson.status
 						},
 						errors: {},
 					});
